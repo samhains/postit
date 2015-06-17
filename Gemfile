@@ -16,11 +16,7 @@ gem 'react-rails'
 gem 'lodash-rails'
 gem 'bcrypt-ruby', '~> 3.0.0'
 
-source 'https://rails-assets.org' do
-  gem 'rails-assets-alt'
-  gem 'rails-assets-react-router'
-  gem 'rails-assets-moment'
-end
+
 
 group :doc do
   gem 'sdoc', require: false
