@@ -1,0 +1,24 @@
+<div class="row">
+  <% if logged_in? %>
+  <%= react_component :VoteBox, votes: post.votes, url: vote_post_path(post), total_votes: post.total_votes,last_vote: current_user.get_users_last_vote(post) %>
+  <% end %>
+  
+  <div class='span8 well'>
+   <% post.categories.each do |category| %>
+      <%= react_component "Category",
+      {name: category.name, id: category.id} %>
+   <% end %>
+    <h4><%= link_to post.title, post %></h4>
+
+    <p><%= post.description %></p>
+
+    <% if post.creator %>
+    <p><span class='quiet'>posted by</span> <%=post.creator.username%></p>
+    <% end %>
+    
+    <%= link_to "#{post.comments.size} comments", post_path(post) %> 
+    <% if post.created_at %>
+    <small> @ <%= date_fix post.created_at%> </small>
+    <%end %>
+  </div>
+</div>

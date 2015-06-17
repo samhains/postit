@@ -1,0 +1,24 @@
+<%= render 'shared/errors', obj: @comment %>
+
+
+<% all_posts = link_to('All Posts',posts_path) %>
+<p class='pull-right'>[<%= link_to 'edit this post', edit_post_path(@post)%>]</p>
+<p>
+<%= render @post.categories %>
+</p>
+
+<%= render 'shared/content_title', title: "#{all_posts} &raquo; #{@post.title}".html_safe%>
+
+<p><%= @post.description %>
+<hr/></p>
+<p><%=link_to 'back', posts_path %></p>
+<% if logged_in? %>
+  <%= form_for [@post, @comment] do |f| %>
+    <%= f.label :body, 'Leave a comment' %>
+    <%= f.text_area :body, rows: 3, class: 'span4' %>
+    <br>
+    <%= f.submit class: 'btn btn-primary' %>
+  <% end %>
+<% end %>
+
+<%= render @post.comments, link_to: false %>

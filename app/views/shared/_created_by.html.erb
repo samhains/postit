@@ -1,0 +1,8 @@
+    <% if obj.creator %>
+    <p><span class='quiet'>posted by</span> <%=obj.creator.username%></p>
+    <% end %>
+    
+    <%= link_to "#{obj.comments.size} comments", obj_path(obj) %> 
+    <% if obj.created_at %>
+    <small> @ <%=obj.created_at%> </small>
+    <%end %>

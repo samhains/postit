@@ -1,0 +1,15 @@
+ <div class="row">
+ <% if logged_in? %>
+  <%= react_component :VoteBox, votes: comment.votes, total_votes: comment.total_votes, url: vote_post_comment_path(comment.post, comment), last_vote: current_user.get_users_last_vote(comment) %>
+  <% end %>
+
+<div class="span8 well">
+
+    <em>" <%= comment.body %> "</em> <% if link_to %>
+      <span> from <%= link_to comment.post.title, post_path(comment.post)  %></span>
+    <% end %>
+    <p><span class='quiet'>posted by</span> <%=comment.creator.username%></p> 
+    
+    <small> @ <%=date_fix comment.created_at%> </small>
+</div>
+</div>
