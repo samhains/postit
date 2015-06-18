@@ -1,5 +1,4 @@
 class PostsController < ApplicationController
-    
   before_action :find_post_by_id, only: [:show, :edit, :update]
   before_action :require_user, only: [:new, :create] 
 
@@ -59,6 +58,6 @@ class PostsController < ApplicationController
 
 
   def find_post_by_id
-    @post = Post.find(params[:id])
+    @post = Post.find_by(slug: params[:id])
   end
 end

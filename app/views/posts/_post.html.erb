@@ -5,8 +5,9 @@
   
   <div class='span8 well'>
    <% post.categories.each do |category| %>
-      <%= react_component "Category",
-      {name: category.name, id: category.id} %>
+   <span class="badge">
+    <%= link_to category.name, category %>
+    </span>
    <% end %>
     <h4><%= link_to post.title, post %></h4>
 

@@ -51,7 +51,7 @@ class UsersController < ApplicationController
 
   def get_user
     if User.exists?(params[:id])
-      @user = User.find params[:id]
+      @user = User.find_by(slug: params[:id])
     else
       flash[:error] = "You cannot go there."
       redirect_to root_path
