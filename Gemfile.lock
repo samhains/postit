@@ -39,6 +39,7 @@ GEM
       execjs
     coffee-script-source (1.9.1.1)
     connection_pool (2.2.0)
+    count_votes_jun (0.0.0)
     erubis (2.7.0)
     execjs (2.5.2)
     hike (1.2.3)
@@ -138,6 +139,7 @@ DEPENDENCIES
   bcrypt-ruby (~> 3.0.0)
   bootstrap-sass (~> 2.3.2.0)
   coffee-rails (~> 4.0.0)
+  count_votes_jun
   jbuilder (~> 1.2)
   jquery-rails
   lodash-rails

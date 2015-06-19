@@ -1,11 +1,10 @@
 class CategoriesController < ApplicationController
   before_action :require_user, only: [:new, :create]
+  before_action :require_admin, only: [:new, :create]
   protect_from_forgery with: :exception
   
   def new
-
     @category = Category.new
-   
   end
 
   def create

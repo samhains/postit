@@ -45,12 +45,12 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:username,:password)
+    params.require(:user).permit(:username,:password, :time_zone)
 
   end
 
   def get_user
-    if User.exists?(params[:id])
+    if User.exists?(slug: params[:id])
       @user = User.find_by(slug: params[:id])
     else
       flash[:error] = "You cannot go there."

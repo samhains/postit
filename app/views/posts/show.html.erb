@@ -2,8 +2,10 @@
 
 
 <% all_posts = link_to('All Posts',posts_path) %>
+<% if logged_in? &&  (is_creator?(@post) || is_admin?) %>
 <p class='pull-right'>[<%= link_to 'edit this post', edit_post_path(@post)%>]</p>
 <p>
+<% end %>
 <%= render @post.categories %>
 </p>
 

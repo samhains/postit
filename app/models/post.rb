@@ -5,13 +5,10 @@ class Post < ActiveRecord::Base
   has_many :comments, inverse_of: :post
   has_many :post_categories
   has_many :categories, through: :post_categories
-  has_many :votes ,  as: :voteable
   validates :title, presence: true, length: {minimum: 5}
   validates :description, presence: true
-  after_validation :generate_slug
+  sluggable_column :title
 
-  def generate_slug
-    self.slug = self.title.gsub(/[^0-9a-z ]/i, '').strip.gsub(' ','-').downcase
-  end
+ 
 
 end

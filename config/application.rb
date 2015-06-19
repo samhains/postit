@@ -1,6 +1,7 @@
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
+require 'count_votes_jun'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -24,6 +25,7 @@ module PostitTemplate
     config.react.jsx_transform_options = {
       harmony: true
     }
+    config.time_zone = 'Eastern Time (US & Canada)'
     config.react.addons = true
     # Tealeaf note: Bootstrap sass gem addition
     config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)

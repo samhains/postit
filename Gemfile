@@ -15,6 +15,7 @@ gem 'jbuilder', '~> 1.2'
 gem 'react-rails'
 gem 'lodash-rails'
 gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'count_votes_jun'
 
 
 

@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
-  before_action :find_post_by_id, only: [:show, :edit, :update]
+  before_action :find_post_by_id, only: [:show, :edit, :update, :vote]
   before_action :require_user, only: [:new, :create] 
+  before_action :require_creator, only: [:edit, :update ]
 
   def index
     @posts = Post.all.sort_by{|post| post.total_votes}.reverse
@@ -42,13 +43,16 @@ class PostsController < ApplicationController
 
   def vote
     @user = current_user
-    @post = Post.find(params[:id])
     old_vote = Vote.remove_old_vote(@post, @user.id)
     @vote = Vote.new(vote: params[:direction], user_id: @user.id)
     @vote.voteable = @post
     if @vote.save
       render json: {new_vote: @vote, old_vote: old_vote}
     end
+  end
+
+  def require_creator
+    access_denied unless is_creator?(@post) || is_admin?
   end
 
   private
